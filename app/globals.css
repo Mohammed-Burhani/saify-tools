@@ -1,26 +1,41 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-body: var(--font-inter);
+  --font-display: var(--font-display);
+  
+  /* Steel color palette */
+  --color-steel-50: #f3f6f8;
+  --color-steel-100: #e3eaef;
+  --color-steel-200: #c3d3dd;
+  --color-steel-300: #9bb4c4;
+  --color-steel-400: #6c8ea5;
+  --color-steel-500: #4c7089;
+  --color-steel-600: #3a5a70;
+  --color-steel-700: #2d4759;
+  --color-steel-800: #213544;
+  --color-steel-900: #0f1e28;
+  --color-steel-950: #0a141b;
+  
+  /* Bolt color palette */
+  --color-bolt-50: #fff4ed;
+  --color-bolt-100: #ffe6d5;
+  --color-bolt-400: #ff8a3d;
+  --color-bolt-500: #f5680e;
+  --color-bolt-600: #e0530a;
+  --color-bolt-700: #b8410a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui;
+}
+
+/* Bolt pattern background */
+.bolt-pattern {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
 }
