@@ -29,7 +29,7 @@ export default function FilterableBrands() {
           </h2>
           <div className="flex items-center justify-center gap-2 text-sm text-amber-600">
             <span className="inline-block w-8 h-0.5 bg-amber-500"></span>
-            <span className="font-medium">Suresh G</span>
+            <span className="font-medium">Explore our range of brands</span>
             <span className="inline-block w-8 h-0.5 bg-amber-500"></span>
           </div>
         </div>
