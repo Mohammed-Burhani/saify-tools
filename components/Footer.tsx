@@ -1,28 +1,17 @@
+import Image from 'next/image';
+
 export default function Footer() {
   return (
     <footer id="contact" className="bg-steel-100 border-t border-steel-200">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
-        <div className="flex items-center gap-2.5 mb-4">
-          <svg
-            width="30"
-            height="30"
-            viewBox="0 0 34 34"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M17 2L30 9.5V24.5L17 32L4 24.5V9.5L17 2Z"
-              stroke="#e0530a"
-              strokeWidth="2"
-            />
-            <path
-              d="M17 11L22.5 14.2V20.6L17 23.8L11.5 20.6V14.2L17 11Z"
-              fill="#213544"
-            />
-          </svg>
-          <span className="font-display font-bold text-lg text-steel-900">
-            SAIFY TOOLS CENTRE
-          </span>
+        <div className="mb-4">
+          <Image
+            src="/logo.png"
+            alt="Saify Tools Centre Logo"
+            width={160}
+            height={45}
+            className="h-11 w-auto"
+          />
         </div>
         <p className="text-steel-500 max-w-md mb-12">
           Authorised distributor of Unbrako fasteners and industrial tools in

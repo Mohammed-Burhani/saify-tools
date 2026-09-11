@@ -38,7 +38,7 @@ export default function Hero() {
         <div className="relative">
           <div className="aspect-4/3 rounded-lg overflow-hidden border border-steel-700 shadow-2xl shadow-black/40">
             <img
-              src="https://images.unsplash.com/photo-1601058268499-e52658b8bb88?q=80&w=1200&auto=format&fit=crop"
+              src="/hero-home.png"
               alt="Assorted industrial fasteners and bolts"
               className="w-full h-full object-cover"
             />

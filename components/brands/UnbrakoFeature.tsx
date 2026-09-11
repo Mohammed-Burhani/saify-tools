@@ -5,7 +5,7 @@ export default function UnbrakoFeature() {
         <div className="border border-steel-200 rounded-lg p-8 bg-white">
           <div className="aspect-[4/3] rounded-md overflow-hidden bg-steel-50 flex items-center justify-center">
             <img
-              src="https://images.unsplash.com/photo-1622037022824-0c71d511ad84?q=80&w=1000&auto=format&fit=crop"
+              src="/hero-brands.jpeg"
               alt="Unbrako socket head fasteners"
               className="w-full h-full object-cover"
             />

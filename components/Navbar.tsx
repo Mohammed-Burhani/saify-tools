@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
@@ -12,31 +13,14 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5">
-            <svg
-              width="34"
-              height="34"
-              viewBox="0 0 34 34"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M17 2L30 9.5V24.5L17 32L4 24.5V9.5L17 2Z"
-                stroke="#e0530a"
-                strokeWidth="2"
-              />
-              <path
-                d="M17 11L22.5 14.2V20.6L17 23.8L11.5 20.6V14.2L17 11Z"
-                fill="#213544"
-              />
-            </svg>
-            <div className="leading-tight">
-              <p className="font-display font-bold text-lg tracking-tight text-steel-900">
-                SAIFY TOOLS
-              </p>
-              <p className="text-[10px] font-semibold tracking-[0.25em] text-bolt-600">
-                CENTRE
-              </p>
-            </div>
+            <Image
+              src="/logo.png"
+              alt="Saify Tools Centre Logo"
+              width={140}
+              height={40}
+              className="h-10 w-auto"
+              priority
+            />
           </Link>
 
           {/* Nav links */}
