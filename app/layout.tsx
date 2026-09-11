@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import QueryProvider from "@/providers/QueryProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,7 +26,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${inter.variable} ${spaceGrotesk.variable} scroll-smooth`}
     >
-      <body className="bg-white text-steel-900 antialiased font-body">{children}</body>
+      <body className="bg-white text-steel-900 antialiased font-body">
+        <QueryProvider>{children}</QueryProvider>
+      </body>
     </html>
   );
 }
