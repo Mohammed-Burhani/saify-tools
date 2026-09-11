@@ -1,4 +1,5 @@
 import {defineField, defineType} from 'sanity'
+import type {Rule} from 'sanity'
 
 export default defineType({
   name: 'siteSettings',
@@ -9,7 +10,7 @@ export default defineType({
       name: 'title',
       title: 'Site Title',
       type: 'string',
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     }),
     defineField({
       name: 'description',

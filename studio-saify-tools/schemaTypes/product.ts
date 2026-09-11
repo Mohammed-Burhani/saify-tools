@@ -1,4 +1,5 @@
 import {defineField, defineType} from 'sanity'
+import type {Rule} from 'sanity'
 
 export default defineType({
   name: 'product',
@@ -9,7 +10,7 @@ export default defineType({
       name: 'name',
       title: 'Name',
       type: 'string',
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     }),
     defineField({
       name: 'slug',
@@ -19,7 +20,7 @@ export default defineType({
         source: 'name',
         maxLength: 96,
       },
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     }),
     defineField({
       name: 'sku',
@@ -58,14 +59,14 @@ export default defineType({
       title: 'Brand',
       type: 'reference',
       to: {type: 'brand'},
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     }),
     defineField({
       name: 'categories',
       title: 'Categories',
       type: 'array',
       of: [{type: 'reference', to: {type: 'category'}}],
-      validation: (Rule) => Rule.required().min(1),
+      validation: (Rule: Rule) => Rule.required().min(1),
     }),
     defineField({
       name: 'specifications',
@@ -101,7 +102,7 @@ export default defineType({
       media: 'images.0',
       brand: 'brand.name',
     },
-    prepare({title, media, brand}) {
+    prepare({title, media, brand}: {title: string; media: any; brand: string}) {
       return {
         title,
         media,
