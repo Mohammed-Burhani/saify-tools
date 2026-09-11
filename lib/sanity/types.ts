@@ -1,5 +1,3 @@
-import type {SanityImageSource} from '@sanity/image-url/lib/types/types'
-
 export interface Category {
   _id: string
   name: string
@@ -17,7 +15,7 @@ export interface Brand {
   slug: {
     current: string
   }
-  logo: SanityImageSource
+  logo: any
   description?: string
   categories: Category[]
   website?: string
@@ -35,7 +33,7 @@ export interface Product {
   description?: any[]
   images?: Array<{
     _key: string
-    asset: SanityImageSource
+    asset: any
     alt?: string
   }>
   brand: Brand
@@ -54,7 +52,7 @@ export interface SiteSettings {
   email?: string
   phone?: string
   address?: string
-  logo?: SanityImageSource
+  logo?: any
   socialMedia?: {
     facebook?: string
     twitter?: string
