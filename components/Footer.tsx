@@ -73,7 +73,7 @@ export default function Footer() {
           <div className="lg:col-span-3">
             <h4 className="mono text-[11px] text-paper/40 tracking-wide mb-5">CONTACT</h4>
             <ul className="space-y-3 text-paper/65 text-[14.5px]">
-              <li className="mono text-[13.5px]">+91 00000 00000</li>
+              <li className="mono text-[13.5px]">+91 73584 41763</li>
               <li>Chennai, Tamil Nadu</li>
               <li>info@saifytools.com</li>
               <li>

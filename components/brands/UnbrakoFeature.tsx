@@ -1,38 +1,71 @@
+'use client';
+
+import Image from 'next/image';
+import { useBrands } from '@/lib/hooks';
+import { urlFor } from '@/lib/sanity/client';
+
 export default function UnbrakoFeature() {
+  const { data: brands } = useBrands();
+  
+  // Find Unbrako or use the first featured brand
+  const featuredBrand = brands?.find(b => b.name.toLowerCase().includes('unbrako')) 
+    || brands?.find(b => b.featured) 
+    || brands?.[0];
+
+  if (!featuredBrand) {
+    return null;
+  }
+
+  const logoUrl = featuredBrand.logo ? urlFor(featuredBrand.logo).width(400).height(200).url() : null;
+
   return (
-    <section className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-24">
-      <div className="grid lg:grid-cols-2 gap-14 items-center">
-        <div className="border border-steel-200 rounded-lg p-8 bg-white">
-          <div className="aspect-[4/3] rounded-md overflow-hidden bg-steel-50 flex items-center justify-center">
-            <img
+    <section className="max-w-[1400px] mx-auto px-6 lg:px-12 py-24 lg:py-32">
+      <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div className="lg:col-span-5">
+          <div className="aspect-[4/5] overflow-hidden">
+            <Image
               src="/hero-brands.jpeg"
-              alt="Unbrako socket head fasteners"
+              alt={`${featuredBrand.name} socket head cap fasteners`}
+              width={600}
+              height={750}
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="mt-5 inline-flex items-center px-4 py-2 rounded bg-bolt-600">
-            <span className="font-display font-bold text-white text-lg tracking-tight">
-              Unbrako
-            </span>
-          </div>
         </div>
-        <div>
-          <p className="text-bolt-600 font-semibold text-sm tracking-wide mb-3">
-            Flagship partner
-          </p>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-steel-900 mb-6">
-            Our association with Unbrako
-          </h2>
-          <p className="text-steel-600 text-lg leading-relaxed mb-5">
-            At Saify Tools Centre, we take pride in being associated with some of the most 
-            reliable and globally trusted brands in the industrial tools and fasteners industry. 
-            Our partnerships ensure that our customers receive only authentic, high-quality 
-            products that meet industry standards.
-          </p>
-          <p className="text-steel-600 text-lg leading-relaxed">
-            Whether your requirement is for precision tools, heavy-duty fasteners, or industrial 
-            consumables, we source from brands known for performance, reliability, and innovation.
-          </p>
+        <div className="lg:col-span-7">
+          {logoUrl ? (
+            <div className="mb-6">
+              <Image
+                src={logoUrl}
+                alt={featuredBrand.name}
+                width={200}
+                height={100}
+                className="h-12 w-auto object-contain"
+                unoptimized
+              />
+            </div>
+          ) : (
+            <p className="serif font-semibold text-[2rem] text-rust mb-6">
+              {featuredBrand.name}
+            </p>
+          )}
+          
+          {featuredBrand.description ? (
+            <div className="text-ink/70 text-[17px] leading-relaxed max-w-xl space-y-5">
+              {featuredBrand.description.split('\n\n').map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
+          ) : (
+            <>
+              <p className="text-ink/70 text-[17px] leading-relaxed mb-5 max-w-xl">
+                At Saify Tools Centre, we&apos;re proud to be associated with the most reliable, globally trusted names in industrial fasteners — {featuredBrand.name} foremost among them. The partnership means our customers get authentic, high-quality product that meets spec, every order.
+              </p>
+              <p className="text-ink/70 text-[17px] leading-relaxed max-w-xl">
+                Whether the requirement is precision tooling, heavy-duty fasteners, or industrial consumables, we source from manufacturers known for performance and consistency — not the cheapest equivalent.
+              </p>
+            </>
+          )}
         </div>
       </div>
     </section>

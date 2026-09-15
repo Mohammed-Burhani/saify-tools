@@ -50,10 +50,10 @@ export default function Navbar() {
           {/* Right side actions */}
           <div className="flex items-center gap-5">
             <a
-              href="tel:+910000000000"
+              href="tel:+917358441763"
               className="hidden lg:block mono text-[13px] text-ink/60 hover:text-ink transition-colors focus-ring"
             >
-              +91 00000 00000
+              +91 73584 41763
             </a>
             <a
               href="#quote"
