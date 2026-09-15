@@ -1,32 +1,38 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import QueryProvider from "@/providers/QueryProvider";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
+const fraunces = Fraunces({
+  variable: "--font-serif",
+  subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-display",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Saify Tools Centre | Authorised Distributor of Fasteners & Industrial Tools",
-  description: "Supplying Unbrako fasteners, hand tools, carbide tools and custom foundation bolts to industries across Chennai.",
+  title: "Saify Tools Centre — Authorised Distributor of Fasteners & Industrial Tools",
+  description: "Precision fasteners, held to a tighter tolerance than the job requires. Authorised distributor of Unbrako fasteners, hand tools, carbide tooling, and custom foundation bolts.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} scroll-smooth`}
+      className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
-      <body className="bg-white text-steel-900 antialiased font-body">
+      <body className="bg-paper text-ink antialiased font-body">
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>

@@ -1,31 +1,32 @@
+import Image from 'next/image';
+
 export default function About() {
   return (
-    <section id="about" className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
-      <div className="grid lg:grid-cols-2 gap-14 items-center">
-        <div className="aspect-4/3 rounded-lg overflow-hidden shadow-xl shadow-steel-900/10">
-          <img
-            src="https://images.unsplash.com/photo-1565043666747-69f6646db940?q=80&w=1200&auto=format&fit=crop"
-            alt="Warehouse aisle stocked with industrial tools and fasteners"
-            className="w-full h-full object-cover"
-          />
+    <section id="about" className="max-w-[1400px] mx-auto px-6 lg:px-12 py-24 lg:py-32">
+      <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+        <div className="lg:col-span-5">
+          <div className="aspect-[5/6] overflow-hidden">
+            <Image
+              src="https://images.unsplash.com/photo-1565043666747-69f6646db940?q=80&w=1200&auto=format&fit=crop"
+              alt="Warehouse aisle stocked with industrial fasteners and tools"
+              width={600}
+              height={720}
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
-        <div>
-          <p className="text-bolt-600 font-semibold text-sm tracking-wide mb-3">
-            Who we are
-          </p>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-steel-900 mb-6">
-            About Saify Tools Centre
-          </h2>
-          <p className="text-steel-600 text-lg leading-relaxed mb-8">
-            Chennai-based supplier of industrial tools and fasteners. Authorised
-            distributor of Unbrako products. We specialise in bulk supply and
-            custom manufacturing solutions.
+        <div className="lg:col-span-7 lg:pt-8">
+          <blockquote className="serif text-[1.8rem] sm:text-[2.15rem] leading-[1.25] text-ink font-medium border-l-2 border-rust pl-7">
+            Chennai-based supplier of industrial tools and fasteners, built on bulk supply and custom manufacturing — not either one alone.
+          </blockquote>
+          <p className="text-ink/60 leading-relaxed mt-9 max-w-xl">
+            We&apos;re an authorised distributor of Unbrako products, which means what ships from our floor matches the spec on the drawing — no substitutions, no second-guessing torque values on site. Where a standard part doesn&apos;t fit, we manufacture foundation bolts and custom fasteners to your drawing directly.
           </p>
           <a
-            href="#"
-            className="inline-flex items-center justify-center px-7 h-12 rounded-md bg-steel-900 hover:bg-steel-800 text-white font-semibold transition-colors"
+            href="#quote"
+            className="inline-flex items-center gap-2 mt-8 text-ink hover:text-rust text-[14.5px] font-medium border-b border-ink/30 hover:border-rust pb-1 transition-colors focus-ring"
           >
-            Learn More
+            Talk to our team
           </a>
         </div>
       </div>

@@ -19,6 +19,9 @@ export function useAllBrands() {
   })
 }
 
+// Alias for backward compatibility
+export const useBrands = useAllBrands
+
 export function useBrandsByCategory(categoryId: string | null) {
   return useQuery({
     queryKey: ['brands', 'category', categoryId],

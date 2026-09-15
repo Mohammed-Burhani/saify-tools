@@ -2,7 +2,7 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import ProductCategories from '@/components/ProductCategories';
 import Brands from '@/components/Brands';
-import FilterableBrands from '@/components/FilterableBrands';
+import BrandsByCategory from '@/components/BrandsByCategory';
 import About from '@/components/About';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import CustomFastenersCTA from '@/components/CustomFastenersCTA';
@@ -16,7 +16,7 @@ export default function Home() {
       <Hero />
       <ProductCategories />
       <Brands />
-      <FilterableBrands />
+      <BrandsByCategory />
       <About />
       <WhyChooseUs />
       <CustomFastenersCTA />

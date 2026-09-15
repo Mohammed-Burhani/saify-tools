@@ -4,7 +4,7 @@ export const ALL_CATEGORIES_QUERY = `*[_type == "category"] | order(order asc) {
   name,
   slug,
   description,
-  icon,
+  image,
   order
 }`
 

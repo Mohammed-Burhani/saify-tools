@@ -5,7 +5,7 @@ export interface Category {
     current: string
   }
   description?: string
-  icon?: string
+  image?: any
   order?: number
 }
 

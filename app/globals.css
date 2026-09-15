@@ -2,28 +2,18 @@
 
 @theme inline {
   --font-body: var(--font-inter);
-  --font-display: var(--font-display);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
   
-  /* Steel color palette */
-  --color-steel-50: #f3f6f8;
-  --color-steel-100: #e3eaef;
-  --color-steel-200: #c3d3dd;
-  --color-steel-300: #9bb4c4;
-  --color-steel-400: #6c8ea5;
-  --color-steel-500: #4c7089;
-  --color-steel-600: #3a5a70;
-  --color-steel-700: #2d4759;
-  --color-steel-800: #213544;
-  --color-steel-900: #0f1e28;
-  --color-steel-950: #0a141b;
-  
-  /* Bolt color palette */
-  --color-bolt-50: #fff4ed;
-  --color-bolt-100: #ffe6d5;
-  --color-bolt-400: #ff8a3d;
-  --color-bolt-500: #f5680e;
-  --color-bolt-600: #e0530a;
-  --color-bolt-700: #b8410a;
+  /* New color palette */
+  --color-ink: #12100E;
+  --color-paper: #F4F0E8;
+  --color-paper2: #EBE5D8;
+  --color-rust: #B8471E;
+  --color-rust2: #8F3517;
+  --color-steel: #6B7370;
+  --color-brass: #C9A15A;
+  --color-line: #D8D0BE;
 }
 
 html {
@@ -32,10 +22,54 @@ html {
 
 body {
   font-family: var(--font-inter), ui-sans-serif, system-ui;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
 }
 
-/* Bolt pattern background */
-.bolt-pattern {
-  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1.5px, transparent 1.5px);
-  background-size: 22px 22px;
+.serif {
+  font-family: var(--font-serif), serif;
+  font-optical-sizing: auto;
+}
+
+.mono {
+  font-family: var(--font-mono), monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Subtle etched line texture on dark sections */
+.etched {
+  background-image: repeating-linear-gradient(115deg, rgba(244,240,232,0.025) 0px, rgba(244,240,232,0.025) 1px, transparent 1px, transparent 64px);
+}
+
+.spec-rail {
+  border-left: 1px solid var(--color-line);
+}
+
+::selection {
+  background: var(--color-rust);
+  color: var(--color-paper);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-reveal {
+    animation: reveal 1.1s cubic-bezier(.22,1,.36,1) both;
+  }
+  .hero-reveal-delay {
+    animation: reveal 1.1s cubic-bezier(.22,1,.36,1) .18s both;
+  }
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-rust);
+  outline-offset: 3px;
 }

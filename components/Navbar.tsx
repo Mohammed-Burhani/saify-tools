@@ -8,11 +8,10 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-steel-100">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5">
+    <header className="border-b border-line bg-paper">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+        <div className="flex items-center justify-between h-[76px]">
+          <Link href="/" className="flex items-baseline gap-2.5 focus-ring">
             <Image
               src="/logo.png"
               alt="Saify Tools Centre Logo"
@@ -24,43 +23,43 @@ export default function Navbar() {
           </Link>
 
           {/* Nav links */}
-          <nav className="hidden md:flex items-center gap-10 font-medium text-[15px] text-steel-700">
-            <a href="/#home" className="hover:text-bolt-600 transition-colors">
+          <nav className="hidden md:flex items-center gap-9 text-[14.5px] text-ink/70">
+            <Link 
+              href="/" 
+              className={pathname === '/' ? 'text-ink border-b border-rust pb-0.5 focus-ring' : 'hover:text-ink transition-colors focus-ring'}
+            >
               Home
-            </a>
-            <a href="/#about" className="hover:text-bolt-600 transition-colors">
+            </Link>
+            <a href="#about" className="hover:text-ink transition-colors focus-ring">
               About
             </a>
-            <a href="/#products" className="hover:text-bolt-600 transition-colors">
+            <a href="#catalog" className="hover:text-ink transition-colors focus-ring">
               Products
             </a>
             <Link 
               href="/brands" 
-              className={pathname === '/brands' ? 'text-bolt-600' : 'hover:text-bolt-600 transition-colors'}
+              className={pathname === '/brands' ? 'text-ink border-b border-rust pb-0.5 focus-ring' : 'hover:text-ink transition-colors focus-ring'}
             >
               Brands
             </Link>
-            <a href="/#contact" className="hover:text-bolt-600 transition-colors">
+            <a href="#contact" className="hover:text-ink transition-colors focus-ring">
               Contact
             </a>
           </nav>
 
           {/* Right side actions */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5">
             <a
-              href="#"
-              aria-label="WhatsApp"
-              className="hidden sm:flex w-10 h-10 rounded-full border border-steel-200 items-center justify-center text-steel-600 hover:border-bolt-500 hover:text-bolt-600 transition-colors"
+              href="tel:+910000000000"
+              className="hidden lg:block mono text-[13px] text-ink/60 hover:text-ink transition-colors focus-ring"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39c1.44.78 3.06 1.2 4.71 1.2h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.845 9.845 0 0 0 12.04 2m0 1.8c2.19 0 4.25.86 5.8 2.4a8.15 8.15 0 0 1 2.4 5.79c0 4.52-3.68 8.19-8.2 8.19a8.2 8.2 0 0 1-4.16-1.14l-.3-.17-3.09.81.83-3.01-.19-.31a8.15 8.15 0 0 1-1.26-4.38c0-4.52 3.68-8.19 8.17-8.19M8.53 6.7c-.17 0-.44.06-.67.31s-.88.86-.88 2.09.9 2.42 1.03 2.59c.13.17 1.75 2.8 4.32 3.82 2.14.85 2.57.68 3.03.64s1.5-.61 1.71-1.2.21-1.09.15-1.2-.25-.17-.5-.3-1.5-.74-1.73-.82-.4-.13-.57.13-.65.82-.8.99-.29.19-.55.06a6.9 6.9 0 0 1-2.03-1.25 7.6 7.6 0 0 1-1.4-1.74c-.15-.25-.02-.39.11-.51.11-.11.25-.29.38-.44s.17-.25.25-.42.04-.31-.02-.44-.57-1.38-.79-1.88c-.2-.5-.42-.42-.57-.43z" />
-              </svg>
+              +91 00000 00000
             </a>
             <a
-              href="/#quote"
-              className="hidden sm:inline-flex items-center px-5 h-10 rounded-md bg-bolt-600 hover:bg-bolt-700 text-white text-sm font-semibold transition-colors"
+              href="#quote"
+              className="inline-flex items-center px-5 h-10 bg-ink hover:bg-rust text-paper text-[13.5px] font-medium tracking-wide transition-colors focus-ring"
             >
-              Get Quote
+              Request Quote
             </a>
           </div>
         </div>

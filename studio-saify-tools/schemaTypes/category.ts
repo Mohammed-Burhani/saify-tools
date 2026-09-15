@@ -29,10 +29,13 @@ export default defineType({
       rows: 3,
     }),
     defineField({
-      name: 'icon',
-      title: 'Icon',
-      type: 'string',
-      description: 'Icon name or emoji for the category',
+      name: 'image',
+      title: 'Category Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      description: 'Image representing this category',
     }),
     defineField({
       name: 'order',
@@ -46,6 +49,7 @@ export default defineType({
     select: {
       title: 'name',
       subtitle: 'description',
+      media: 'image',
     },
   },
 })
