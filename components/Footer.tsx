@@ -11,9 +11,9 @@ export default function Footer() {
               <Image
                 src="/logo.png"
                 alt="Saify Tools Centre Logo"
-                width={160}
-                height={45}
-                className="h-11 w-auto brightness-0 invert"
+                width={220}
+                height={62}
+                className="h-[60px] w-auto brightness-0 invert"
               />
             </div>
             <p className="text-paper/45 text-[14.5px] leading-relaxed max-w-xs">

@@ -15,9 +15,9 @@ export default function Navbar() {
             <Image
               src="/logo.png"
               alt="Saify Tools Centre Logo"
-              width={140}
-              height={40}
-              className="h-10 w-auto"
+              width={200}
+              height={56}
+              className="h-14 w-auto"
               priority
             />
           </Link>

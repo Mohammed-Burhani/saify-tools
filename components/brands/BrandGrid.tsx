@@ -119,7 +119,7 @@ export default function BrandGrid() {
 
 // Fixed logo slot height. Source is requested at 2x this for retina
 // screens, same approach as the marquee — see Brands.tsx.
-const LOGO_HEIGHT = 52;
+const LOGO_HEIGHT = 72;
 
 function BrandRow({ brand, index }: { brand: Brand; index: number }) {
   const logoSrc = brand.logo
@@ -133,7 +133,7 @@ function BrandRow({ brand, index }: { brand: Brand; index: number }) {
             same starting x-position, whether or not that brand has a
             logo uploaded yet. */}
         <div
-          className="shrink-0 w-14 flex items-center justify-center grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all"
+          className="shrink-0 w-20 flex items-center justify-center grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all"
           style={{ height: LOGO_HEIGHT }}
         >
           {logoSrc && (
