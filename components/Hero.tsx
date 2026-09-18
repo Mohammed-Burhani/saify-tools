@@ -63,8 +63,10 @@ export default function Hero() {
             alt="Precision fasteners and hex bolts arranged on a steel surface"
             fill
             className="object-cover opacity-80"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#12100E] via-[#12100E]/10 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-l from-[#12100E] via-transparent to-transparent" />
         </div>
       </div>
     </section>

@@ -8,6 +8,7 @@ export default function CustomFastenersCTA() {
         alt="Close-up of custom manufactured bolts and fasteners"
         fill
         className="object-cover"
+        priority
       />
       <div className="absolute inset-0 bg-ink/50"></div>
       <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 py-24 lg:py-32">

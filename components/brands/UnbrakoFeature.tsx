@@ -29,6 +29,7 @@ export default function UnbrakoFeature() {
               width={600}
               height={750}
               className="w-full h-full object-cover"
+              priority
             />
           </div>
         </div>
