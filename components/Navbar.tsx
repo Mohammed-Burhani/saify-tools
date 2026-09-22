@@ -30,9 +30,12 @@ export default function Navbar() {
             >
               Home
             </Link>
-            <a href="#about" className="hover:text-ink transition-colors focus-ring">
+            <Link
+              href="/about"
+              className={pathname === '/about' ? 'text-ink border-b border-rust pb-0.5 focus-ring' : 'hover:text-ink transition-colors focus-ring'}
+            >
               About
-            </a>
+            </Link>
             <a href="#catalog" className="hover:text-ink transition-colors focus-ring">
               Products
             </a>

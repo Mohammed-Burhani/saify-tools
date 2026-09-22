@@ -54,9 +54,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#about" className="hover:text-rust transition-colors focus-ring">
+                <Link href="/about" className="hover:text-rust transition-colors focus-ring">
                   About
-                </a>
+                </Link>
               </li>
               <li>
                 <Link href="/brands" className="hover:text-rust transition-colors focus-ring">
