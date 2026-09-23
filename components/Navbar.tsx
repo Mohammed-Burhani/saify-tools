@@ -39,15 +39,24 @@ export default function Navbar() {
             <a href="#catalog" className="hover:text-ink transition-colors focus-ring">
               Products
             </a>
-            <Link 
-              href="/brands" 
+            <Link
+              href="/manufacturing"
+              className={pathname === '/manufacturing' ? 'text-ink border-b border-rust pb-0.5 focus-ring' : 'hover:text-ink transition-colors focus-ring'}
+            >
+              Manufacturing
+            </Link>
+            <Link
+              href="/brands"
               className={pathname === '/brands' ? 'text-ink border-b border-rust pb-0.5 focus-ring' : 'hover:text-ink transition-colors focus-ring'}
             >
               Brands
             </Link>
-            <a href="#contact" className="hover:text-ink transition-colors focus-ring">
+            <Link
+              href="/contact"
+              className={pathname === '/contact' ? 'text-ink border-b border-rust pb-0.5 focus-ring' : 'hover:text-ink transition-colors focus-ring'}
+            >
               Contact
-            </a>
+            </Link>
           </nav>
 
           {/* Right side actions */}
