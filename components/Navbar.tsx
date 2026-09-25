@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import ProductsMegaMenu from './ProductsMegaMenu';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -36,9 +37,7 @@ export default function Navbar() {
             >
               About
             </Link>
-            <a href="#catalog" className="hover:text-ink transition-colors focus-ring">
-              Products
-            </a>
+            <ProductsMegaMenu />
             <Link
               href="/manufacturing"
               className={pathname === '/manufacturing' ? 'text-ink border-b border-rust pb-0.5 focus-ring' : 'hover:text-ink transition-colors focus-ring'}

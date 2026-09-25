@@ -7,6 +7,12 @@ export interface Category {
   description?: string
   image?: any
   order?: number
+  parent?: {
+    _id: string
+    name: string
+    slug: {current: string}
+  } | null
+  subcategories?: Category[]
 }
 
 export interface Brand {
@@ -44,6 +50,20 @@ export interface Product {
   }>
   featured: boolean
   inStock: boolean
+}
+
+export interface ManufacturingStandard {
+  _id: string
+  code: string
+  description?: string
+  specSheet?: {
+    asset: {
+      _id: string
+      url: string
+      originalFilename?: string
+    }
+  }
+  order?: number
 }
 
 export interface SiteSettings {

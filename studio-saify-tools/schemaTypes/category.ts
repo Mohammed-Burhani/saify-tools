@@ -29,6 +29,19 @@ export default defineType({
       rows: 3,
     }),
     defineField({
+      name: 'parent',
+      title: 'Parent Category',
+      type: 'reference',
+      to: {type: 'category'},
+      description: 'Leave empty for a top-level category. Set this to make it a subcategory.',
+      options: {
+        filter: ({document}) => ({
+          filter: '_type == "category" && !defined(parent) && _id != $id',
+          params: {id: document._id.replace('drafts.', '')},
+        }),
+      },
+    }),
+    defineField({
       name: 'image',
       title: 'Category Image',
       type: 'image',
@@ -48,8 +61,15 @@ export default defineType({
   preview: {
     select: {
       title: 'name',
-      subtitle: 'description',
+      parentName: 'parent.name',
       media: 'image',
+    },
+    prepare({title, parentName, media}: {title: string; parentName?: string; media: any}) {
+      return {
+        title,
+        subtitle: parentName ? `Subcategory of ${parentName}` : 'Top-level category',
+        media,
+      }
     },
   },
 })

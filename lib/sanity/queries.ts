@@ -5,7 +5,30 @@ export const ALL_CATEGORIES_QUERY = `*[_type == "category"] | order(order asc) {
   slug,
   description,
   image,
-  order
+  order,
+  parent-> {
+    _id,
+    name,
+    slug
+  }
+}`
+
+// Top-level categories with their subcategories nested, for the mega menu and products page
+export const CATEGORY_TREE_QUERY = `*[_type == "category" && !defined(parent)] | order(order asc) {
+  _id,
+  name,
+  slug,
+  description,
+  image,
+  order,
+  "subcategories": *[_type == "category" && references(^._id)] | order(order asc) {
+    _id,
+    name,
+    slug,
+    description,
+    image,
+    order
+  }
 }`
 
 // Brand Queries
@@ -186,6 +209,21 @@ export const PRODUCT_BY_SLUG_QUERY = `*[_type == "product" && slug.current == $s
   specifications,
   featured,
   inStock
+}`
+
+// Manufacturing Standards Query
+export const ALL_MANUFACTURING_STANDARDS_QUERY = `*[_type == "manufacturingStandard"] | order(order asc) {
+  _id,
+  code,
+  description,
+  specSheet {
+    asset-> {
+      _id,
+      url,
+      originalFilename
+    }
+  },
+  order
 }`
 
 // Site Settings Query

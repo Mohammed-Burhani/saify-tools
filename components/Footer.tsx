@@ -24,24 +24,24 @@ export default function Footer() {
             <h4 className="mono text-[11px] text-paper/40 tracking-wide mb-5">PRODUCTS</h4>
             <ul className="space-y-3 text-paper/65 text-[14.5px]">
               <li>
-                <a href="#catalog" className="hover:text-rust transition-colors focus-ring">
+                <Link href="/products" className="hover:text-rust transition-colors focus-ring">
                   Fasteners
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#catalog" className="hover:text-rust transition-colors focus-ring">
+                <Link href="/products" className="hover:text-rust transition-colors focus-ring">
                   Hand Tools
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#catalog" className="hover:text-rust transition-colors focus-ring">
+                <Link href="/products" className="hover:text-rust transition-colors focus-ring">
                   Carbide Tools
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#catalog" className="hover:text-rust transition-colors focus-ring">
+                <Link href="/products" className="hover:text-rust transition-colors focus-ring">
                   Foundation Bolts
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
