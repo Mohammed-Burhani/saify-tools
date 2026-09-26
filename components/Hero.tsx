@@ -2,71 +2,131 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="relative bg-[#12100E] overflow-hidden">
-      {/* etched texture — inlined so it doesn't depend on a custom utility class */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            'repeating-linear-gradient(115deg, rgba(244,240,232,0.025) 0px, rgba(244,240,232,0.025) 1px, transparent 1px, transparent 64px)',
-        }}
-      />
+    <section className="relative bg-ink overflow-hidden border-b-4 border-rust">
+      {/* Full-screen image base */}
+      <div className="relative h-[70vh] min-h-[500px] max-h-[800px]">
+        <Image
+          src="/hero-home.png"
+          alt="Precision fasteners and hex bolts arranged on steel surface"
+          fill
+          className="object-cover"
+          priority
+        />
+        
+        {/* Dark overlay with gradient */}
+        <div className="absolute inset-0 bg-ink/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
 
-      <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-12 gap-0">
-          {/* Spec rail */}
-          <div className="hidden lg:flex lg:col-span-2 flex-col justify-between py-16 pr-8 pl-4 border-l border-white/10">
-            <div className="font-mono text-[11px] leading-[2] text-[#F4F0E8]/40">
-              <p>EST. — CHENNAI</p>
-              <p>DIN · ISO · IS SPEC</p>
-              <p>UNBRAKO AUTHORISED</p>
+        {/* Grid overlay for brutalist texture */}
+        <div
+          className="absolute inset-0 opacity-[0.08]"
+          style={{
+            backgroundImage: 'linear-gradient(rgba(244,240,232,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(244,240,232,0.4) 1px, transparent 1px)',
+            backgroundSize: '60px 60px'
+          }}
+        />
+
+        {/* Content overlay */}
+        <div className="relative h-full max-w-[1400px] mx-auto">
+          <div className="grid lg:grid-cols-12 h-full">
+            {/* Left rail - brutalist labeling */}
+            <div className="hidden lg:flex lg:col-span-2 flex-col justify-between border-r-2 border-paper/10 py-12 px-4">
+              <div className="space-y-8">
+                <div className="mono text-[10px] text-brass tracking-[0.15em] leading-[2]">
+                  <div className="border-l-2 border-brass pl-3 mb-2">SECTION_01</div>
+                  <div className="text-paper/40 pl-3">CHENNAI</div>
+                  <div className="text-paper/40 pl-3 mt-1">EST. 2010</div>
+                </div>
+                
+                <div className="space-y-2">
+                  <div className="h-[2px] bg-paper/10 w-12" />
+                  <div className="h-[2px] bg-paper/10 w-8" />
+                  <div className="h-[2px] bg-paper/10 w-16" />
+                </div>
+              </div>
+
+              <div className="mono text-[9px] text-paper/20 tracking-[0.2em] -translate-y-24">
+                <div className="rotate-180" style={{ writingMode: 'vertical-rl' }}>
+                  DIN / ISO / IS SPEC
+                </div>
+              </div>
             </div>
-            <div className="font-mono text-[11px] text-[#F4F0E8]/40 leading-[2]">
-              <p>SCROLL</p>
-              <p>001 / 006</p>
+
+            {/* Main content */}
+            <div className="lg:col-span-10 flex flex-col justify-between px-6 lg:px-16 py-12 lg:py-16">
+              {/* Top label */}
+              <div className="flex items-center gap-4 mb-2.5 ml-1">
+                <div className="flex gap-2">
+                  <div className="w-2 h-2 bg-rust" />
+                  <div className="w-2 h-2 bg-rust/50" />
+                  <div className="w-2 h-2 bg-rust/20" />
+                </div>
+                <span className="mono text-[10px] text-brass tracking-[0.15em]">
+                  FASTENERS / INDUSTRIAL TOOLS
+                </span>
+              </div>
+
+              {/* Bottom content */}
+              <div>
+                {/* Headline - responsive sizing */}
+                <h1 className="mono text-[2.2rem] sm:text-[3.2rem] md:text-[4rem] lg:text-[4.8rem] xl:text-[5.6rem] leading-[0.9] text-paper font-black uppercase tracking-tighter max-w-5xl mb-6 lg:mb-8">
+                  PRECISION<br />
+                  ENGINEERED<br />
+                  <span className="text-rust">FASTENERS</span>
+                </h1>
+
+                {/* Spec block */}
+                <div className="border-t-4 border-steel/30 pt-4 lg:pt-6 max-w-2xl mb-6 lg:mb-8">
+                  <p className="mono text-[11px] sm:text-[12px] lg:text-[13px] text-paper/75 leading-[1.8]">
+                    AUTHORIZED UNBRAKO DISTRIBUTOR — HAND TOOLS / CARBIDE TOOLING / CUSTOM FOUNDATION BOLTS
+                  </p>
+                </div>
+
+                {/* CTA buttons */}
+                <div className="flex flex-wrap gap-3 lg:gap-4 mb-8 lg:mb-10">
+                  <a
+                    href="#quote"
+                    className="inline-flex items-center px-6 lg:px-8 h-12 lg:h-14 bg-rust hover:bg-rust2 text-paper mono text-[11px] lg:text-[12px] font-bold tracking-[0.1em] transition-colors focus-ring uppercase border-2 border-rust hover:border-rust2"
+                  >
+                    Request Quote
+                  </a>
+                  <a
+                    href="#catalog"
+                    className="inline-flex items-center px-6 lg:px-8 h-12 lg:h-14 border-2 border-paper/30 hover:bg-paper/10 text-paper mono text-[11px] lg:text-[12px] font-bold tracking-[0.1em] transition-colors focus-ring uppercase"
+                  >
+                    View Catalog
+                  </a>
+                </div>
+
+                {/* Industrial metrics bar */}
+                <div className="pt-6 lg:pt-8 border-t-2 border-paper/10">
+                  <div className="flex flex-wrap gap-6 lg:gap-10">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-rust" />
+                      <div>
+                        <div className="mono text-[9px] text-paper/40 tracking-wider">EXPERIENCE</div>
+                        <div className="mono text-[14px] lg:text-[16px] font-bold text-paper">10+ YEARS</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-brass" />
+                      <div>
+                        <div className="mono text-[9px] text-paper/40 tracking-wider">BRANDS</div>
+                        <div className="mono text-[14px] lg:text-[16px] font-bold text-paper">30+ PARTNERS</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-steel" />
+                      <div>
+                        <div className="mono text-[9px] text-paper/40 tracking-wider">STANDARDS</div>
+                        <div className="mono text-[14px] lg:text-[16px] font-bold text-paper">DIN / ISO / IS</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
-          {/* Headline block */}
-          <div className="lg:col-span-10 py-20 lg:py-28 lg:pl-14 lg:border-l border-white/10">
-            <p className="font-mono text-[12.5px] text-[#C9A15A] tracking-[0.08em] mb-7">
-              Fasteners &amp; Industrial Tools — Chennai, Tamil Nadu
-            </p>
-            <h1 className="font-serif text-[2.6rem] sm:text-[3.6rem] lg:text-[4.6rem] leading-[0.98] text-[#F4F0E8] font-medium max-w-4xl">
-              Precision fasteners, held to a tighter tolerance than the job requires.
-            </h1>
-            <p className="text-[17px] text-[#F4F0E8]/55 max-w-lg mt-8 leading-relaxed">
-              Authorised distributor of Unbrako fasteners, hand tools, carbide tooling, and
-              custom foundation bolts — supplying manufacturers across Chennai for over a decade.
-            </p>
-            <div className="flex flex-wrap items-center gap-x-10 gap-y-4 mt-11">
-              <a
-                href="#quote"
-                className="inline-flex items-center px-7 h-[52px] bg-[#B8471E] hover:bg-[#8F3517] text-[#F4F0E8] text-[14.5px] font-medium tracking-wide transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#B8471E] focus-visible:outline-offset-2"
-              >
-                Request a Quote
-              </a>
-              <a
-                href="#catalog"
-                className="inline-flex items-center gap-2 text-[#F4F0E8]/80 hover:text-[#F4F0E8] text-[14.5px] font-medium border-b border-[#F4F0E8]/30 hover:border-[#F4F0E8] pb-1 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#B8471E] focus-visible:outline-offset-2"
-              >
-                Browse the catalog
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Full-bleed image strip */}
-        <div className="relative h-[280px] sm:h-[360px] lg:h-[440px] border-t border-white/10">
-          <Image
-            src="/hero-home.png"
-            alt="Precision fasteners and hex bolts arranged on a steel surface"
-            fill
-            className="object-cover opacity-80"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#12100E] via-[#12100E]/10 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-l from-[#12100E] via-transparent to-transparent" />
         </div>
       </div>
     </section>

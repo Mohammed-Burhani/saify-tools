@@ -19,7 +19,7 @@ export default function ContactMap() {
           <div className="aspect-[16/7] overflow-hidden">
             <iframe
               title="Saify Tools Centre location in Chennai, Tamil Nadu"
-              src="https://www.google.com/maps?q=Chennai%2C%20Tamil%20Nadu%2C%20India&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4650.116210715877!2d80.2871771!3d13.0953764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526f44d21d89c7%3A0x9cd3f3aee25e0927!2sSAIFY%20TOOLS%20CENTRE!5e1!3m2!1sen!2sin!4v1790243403753!5m2!1sen!2sin"
               className="w-full h-full border-0 grayscale-[35%] contrast-[1.05]"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
