@@ -127,7 +127,10 @@ function BrandRow({ brand, index }: { brand: Brand; index: number }) {
     : null;
 
   return (
-    <div className="brand-row group flex items-center justify-between gap-4 py-4 border-b border-[#12100E]/15">
+    <a
+      href={`/products?brand=${brand.slug.current}`}
+      className="brand-row group flex items-center justify-between gap-4 py-4 border-b border-[#12100E]/15 cursor-pointer"
+    >
       <div className="flex items-center gap-4 min-w-0">
         {/* Fixed-width logo slot keeps every row's name aligned to the
             same starting x-position, whether or not that brand has a
@@ -161,6 +164,6 @@ function BrandRow({ brand, index }: { brand: Brand; index: number }) {
           color: #b8471e;
         }
       `}</style>
-    </div>
+    </a>
   );
 }

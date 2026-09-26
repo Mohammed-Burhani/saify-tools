@@ -127,16 +127,21 @@ function BrandLogo({ brand }: { brand: Brand }) {
     // Fallback to name if a brand is missing its logo asset, so the
     // marquee never silently drops an entry.
     return (
-      <span className="font-serif font-semibold text-[1.15rem] text-[#12100E]/70 whitespace-nowrap">
+      <a 
+        href={`/products?brand=${brand.slug.current}`}
+        className="font-serif font-semibold text-[1.15rem] text-[#12100E]/70 hover:text-[#B8471E] whitespace-nowrap transition-colors"
+      >
         {brand.name}
-      </span>
+      </a>
     );
   }
 
   return (
-    <div
+    <a
+      href={`/products?brand=${brand.slug.current}`}
       className="relative shrink-0 flex items-center justify-center w-32 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all"
       style={{ height: LOGO_DISPLAY_HEIGHT }}
+      title={`View ${brand.name} products`}
     >
       {/*
         Two things fixed vs. the previous version:
@@ -157,6 +162,6 @@ function BrandLogo({ brand }: { brand: Brand }) {
         unoptimized
         className="h-full w-auto object-contain"
       />
-    </div>
+    </a>
   );
 }

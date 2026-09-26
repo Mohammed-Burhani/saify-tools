@@ -3,17 +3,19 @@
 import { useMemo, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { useAllProducts, useCategoryTree } from '@/lib/hooks';
+import { useAllProducts, useCategoryTree, useBrands } from '@/lib/hooks';
 import { urlFor } from '@/lib/sanity/client';
-import type { Category, Product } from '@/lib/sanity/types';
+import type { Category, Product, Brand } from '@/lib/sanity/types';
 
 export default function ProductGrid() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const categorySlug = searchParams.get('category');
+  const brandSlug = searchParams.get('brand');
 
   const { data: products, isLoading: productsLoading, error } = useAllProducts();
   const { data: categoryTree, isLoading: categoriesLoading } = useCategoryTree();
+  const { data: brands, isLoading: brandsLoading } = useBrands();
 
   const flatCategories = useMemo(() => {
     if (!categoryTree) return [];
@@ -23,6 +25,11 @@ export default function ProductGrid() {
   const activeCategory = useMemo(
     () => flatCategories.find((c) => c.slug.current === categorySlug) ?? null,
     [flatCategories, categorySlug]
+  );
+
+  const activeBrand = useMemo(
+    () => brands?.find((b: Brand) => b.slug.current === brandSlug) ?? null,
+    [brands, brandSlug]
   );
 
   // If the active category is a top-level one, its subcategories become a secondary filter row
@@ -38,15 +45,28 @@ export default function ProductGrid() {
   const [visibleCount, setVisibleCount] = useState(12);
   useEffect(() => {
     setVisibleCount(12);
-  }, [categorySlug]);
+  }, [categorySlug, brandSlug]);
 
   const filteredProducts = useMemo(() => {
     if (!products) return [];
-    if (!activeCategory) return products;
-    return products.filter((p: Product) => p.categories?.some((c) => c._id === activeCategory._id));
-  }, [products, activeCategory]);
+    let filtered = products;
+    
+    // Filter by category
+    if (activeCategory) {
+      filtered = filtered.filter((p: Product) => 
+        p.categories?.some((c) => c._id === activeCategory._id)
+      );
+    }
+    
+    // Filter by brand
+    if (activeBrand) {
+      filtered = filtered.filter((p: Product) => p.brand?._id === activeBrand._id);
+    }
+    
+    return filtered;
+  }, [products, activeCategory, activeBrand]);
 
-  const isLoading = productsLoading || categoriesLoading;
+  const isLoading = productsLoading || categoriesLoading || brandsLoading;
 
   const setCategory = (slug: string | null) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -58,24 +78,102 @@ export default function ProductGrid() {
     router.push(`/products${params.toString() ? `?${params.toString()}` : ''}`, { scroll: false });
   };
 
+  const setBrand = (slug: string | null) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (slug) {
+      params.set('brand', slug);
+    } else {
+      params.delete('brand');
+    }
+    router.push(`/products${params.toString() ? `?${params.toString()}` : ''}`, { scroll: false });
+  };
+
+  const clearFilters = () => {
+    router.push('/products', { scroll: false });
+  };
+
   return (
     <section id="catalog" className="max-w-[1400px] mx-auto px-6 lg:px-12 py-24 lg:py-32">
+      {/* Active filters display */}
+      {(activeBrand || activeCategory) && (
+        <div className="flex flex-wrap items-center gap-3 mb-6 pb-6 border-b border-ink/10">
+          <span className="text-[13px] text-ink/50 font-medium">Active Filters:</span>
+          {activeBrand && (
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-rust/10 border border-rust/20 text-rust text-[13px]">
+              <span>Brand: {activeBrand.name}</span>
+              <button
+                onClick={() => setBrand(null)}
+                className="hover:text-rust/70 transition-colors"
+                aria-label="Clear brand filter"
+              >
+                ×
+              </button>
+            </div>
+          )}
+          {activeCategory && (
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-rust/10 border border-rust/20 text-rust text-[13px]">
+              <span>Category: {activeCategory.name}</span>
+              <button
+                onClick={() => setCategory(null)}
+                className="hover:text-rust/70 transition-colors"
+                aria-label="Clear category filter"
+              >
+                ×
+              </button>
+            </div>
+          )}
+          <button
+            onClick={clearFilters}
+            className="text-[12px] text-ink/60 hover:text-ink underline transition-colors"
+          >
+            Clear all
+          </button>
+        </div>
+      )}
+
+      {/* Brand filter */}
+      {brands && brands.length > 0 && (
+        <div className="mb-6">
+          <h3 className="text-[13px] text-ink/60 font-medium mb-3">Filter by Brand</h3>
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Filter products by brand">
+            <FilterChip
+              small
+              label="All Brands"
+              active={!activeBrand}
+              onClick={() => setBrand(null)}
+            />
+            {brands.map((brand: Brand) => (
+              <FilterChip
+                key={brand._id}
+                small
+                label={brand.name}
+                active={activeBrand?._id === brand._id}
+                onClick={() => setBrand(brand.slug.current)}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Top-level category filter */}
       {categoryTree && categoryTree.length > 0 && (
-        <div className="flex flex-wrap gap-2.5 mb-6" role="tablist" aria-label="Filter products by category">
-          <FilterChip
-            label="All Products"
-            active={!activeParent}
-            onClick={() => setCategory(null)}
-          />
-          {categoryTree.map((cat: Category) => (
+        <div>
+          <h3 className="text-[13px] text-ink/60 font-medium mb-3">Filter by Category</h3>
+          <div className="flex flex-wrap gap-2.5 mb-6" role="tablist" aria-label="Filter products by category">
             <FilterChip
-              key={cat._id}
-              label={cat.name}
-              active={activeParent?._id === cat._id}
-              onClick={() => setCategory(cat.slug.current)}
+              label="All Products"
+              active={!activeParent}
+              onClick={() => setCategory(null)}
             />
-          ))}
+            {categoryTree.map((cat: Category) => (
+              <FilterChip
+                key={cat._id}
+                label={cat.name}
+                active={activeParent?._id === cat._id}
+                onClick={() => setCategory(cat.slug.current)}
+              />
+            ))}
+          </div>
         </div>
       )}
 
@@ -114,7 +212,7 @@ export default function ProductGrid() {
 
       {!isLoading && !error && filteredProducts.length === 0 && (
         <div className="border-t border-ink/15 py-16 text-center text-ink/40 text-[14px]">
-          No products in this category yet.
+          No products match the selected filters.
         </div>
       )}
 

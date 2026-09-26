@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Image from 'next/image';
 import { urlFor } from '@/lib/sanity/client';
 import type { Brand } from '@/lib/sanity/types';
@@ -9,7 +10,8 @@ interface BrandCardProps {
 
 export default function BrandCard({ brand, className = '' }: BrandCardProps) {
   return (
-    <div
+    <Link
+      href={`/products?brand=${brand.slug.current}`}
       className={`
         bg-white rounded-xl shadow-md hover:shadow-xl 
         transition-all duration-300 p-6 
@@ -55,6 +57,6 @@ export default function BrandCard({ brand, className = '' }: BrandCardProps) {
           </span>
         </div>
       )}
-    </div>
+    </Link>
   );
 }
