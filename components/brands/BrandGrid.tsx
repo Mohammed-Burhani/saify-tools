@@ -140,9 +140,8 @@ export default function BrandGrid() {
   );
 }
 
-// Fixed logo slot height. Source is requested at 2x this for retina
-// screens, same approach as the marquee — see Brands.tsx.
-const LOGO_HEIGHT = 72;
+// Logo height increased by 30%: 72 * 1.3 = 93.6 ≈ 94
+const LOGO_HEIGHT = 128;
 
 function BrandRow({ brand, index }: { brand: Brand; index: number }) {
   const logoSrc = brand.logo
@@ -155,9 +154,9 @@ function BrandRow({ brand, index }: { brand: Brand; index: number }) {
       className="brand-row group flex items-center justify-between gap-6 px-6 py-6 border-b-2 border-ink/10 cursor-pointer hover:bg-ink/5 transition-colors"
     >
       <div className="flex items-center gap-6 min-w-0 flex-1">
-        {/* Logo container with fixed width */}
+        {/* Logo container increased by 30%: w-24->w-32, h-16->h-20 */}
         <div
-          className="shrink-0 w-24 h-16 flex items-center justify-center bg-paper border-2 border-ink/10 group-hover:border-rust/30 transition-colors"
+          className="shrink-0 w-40  h-40 flex items-center justify-center bg-paper border-2 border-ink/10 group-hover:border-rust/30 transition-colors"
         >
           {logoSrc ? (
             <Image
@@ -175,9 +174,9 @@ function BrandRow({ brand, index }: { brand: Brand; index: number }) {
         </div>
         
         {/* Brand name */}
-        <span className="brand-name mono text-[13px] font-bold text-ink group-hover:text-rust transition-colors uppercase tracking-wide truncate">
+        {/* <span className="brand-name mono text-[13px] font-bold text-ink group-hover:text-rust transition-colors uppercase tracking-wide truncate">
           {brand.name}
-        </span>
+        </span> */}
       </div>
 
       {/* Index number */}

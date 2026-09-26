@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section className="relative bg-ink overflow-hidden border-b-4 border-rust">
       {/* Full-screen image base */}
-      <div className="relative h-[70vh] min-h-[500px] max-h-[800px]">
+      <div className="relative min-h-[640px] lg:min-h-[760px]">
         <Image
           src="/hero-home.png"
           alt="Precision fasteners and hex bolts arranged on steel surface"
