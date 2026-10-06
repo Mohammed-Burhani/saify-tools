@@ -1,7 +1,22 @@
 const details = [
-  { label: 'CALL US', value: '+91 73584 41763', href: 'tel:+917358441763' },
-  { label: 'EMAIL US', value: 'info@saifytools.com', href: 'mailto:info@saifytools.com' },
-  { label: 'VISIT US', value: 'Chennai, Tamil Nadu', href: '#location' },
+  {
+    label: 'CALL US',
+    lines: [
+      { value: '+91 73584 41763', href: 'tel:+917358441763' },
+      { value: '+91 96772 09852', href: 'tel:+919677209852' },
+      { value: '044 4509 8406', href: 'tel:+914445098406' },
+    ],
+  },
+  {
+    label: 'EMAIL US',
+    lines: [{ value: 'saifytools@gmail.com', href: 'mailto:saifytools@gmail.com' }],
+  },
+  {
+    label: 'VISIT US',
+    lines: [
+      { value: 'Old No.39, New No.18, Sembudoss Street, Chennai – 600 001', href: '#location' },
+    ],
+  },
 ];
 
 export default function ContactHero() {
@@ -30,16 +45,21 @@ export default function ContactHero() {
 
         <div className="grid sm:grid-cols-3 gap-x-6 gap-y-6 mt-10 lg:mt-12 pt-8 border-t border-paper/15">
           {details.map((detail) => (
-            <a
-              key={detail.label}
-              href={detail.href}
-              className="group block focus-ring"
-            >
+            <div key={detail.label}>
               <p className="mono text-[11px] text-paper/40 tracking-wide mb-2">{detail.label}</p>
-              <p className="text-paper text-[16px] font-medium group-hover:text-rust transition-colors">
-                {detail.value}
-              </p>
-            </a>
+              <ul className="space-y-1">
+                {detail.lines.map((line) => (
+                  <li key={line.value}>
+                    <a
+                      href={line.href}
+                      className="text-paper text-[16px] font-medium hover:text-rust transition-colors focus-ring"
+                    >
+                      {line.value}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       </div>

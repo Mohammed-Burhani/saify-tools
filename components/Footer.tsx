@@ -73,11 +73,36 @@ export default function Footer() {
           <div className="lg:col-span-3">
             <h4 className="mono text-[11px] text-paper/40 tracking-wide mb-5">CONTACT</h4>
             <ul className="space-y-3 text-paper/65 text-[14.5px]">
-              <li className="mono text-[13.5px]">+91 73584 41763</li>
-              <li>Chennai, Tamil Nadu</li>
-              <li>info@saifytools.com</li>
+              <li className="mono text-[13.5px] space-y-1">
+                <a href="tel:+917358441763" className="block hover:text-rust transition-colors focus-ring">
+                  +91 73584 41763
+                </a>
+                <a href="tel:+919677209852" className="block hover:text-rust transition-colors focus-ring">
+                  +91 96772 09852
+                </a>
+                <a href="tel:+914445098406" className="block hover:text-rust transition-colors focus-ring">
+                  044 4509 8406
+                </a>
+              </li>
               <li>
-                <a href="#" className="hover:text-rust transition-colors focus-ring">
+                <a href="mailto:saifytools@gmail.com" className="hover:text-rust transition-colors focus-ring">
+                  saifytools@gmail.com
+                </a>
+              </li>
+              <li className="leading-relaxed">
+                Old No.39, New No.18,
+                <br />
+                Sembudoss Street,
+                <br />
+                Chennai – 600 001, Tamil Nadu
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/917358441763"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-rust transition-colors focus-ring"
+                >
                   WhatsApp
                 </a>
               </li>

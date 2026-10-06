@@ -10,8 +10,8 @@ export default function ContactMap() {
             </h2>
           </div>
           <p className="text-ink/55 max-w-sm leading-relaxed">
-            Chennai, Tamil Nadu, India — reach out ahead of a visit and our team will be ready for
-            you.
+            Old No.39, New No.18, Sembudoss Street, Chennai – 600 001, Tamil Nadu — reach out ahead
+            of a visit and our team will be ready for you.
           </p>
         </div>
 
